@@ -1,0 +1,25 @@
+.player-container {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    & > * {
+        display: table-row;
+        text-align: center;
+    }
+    & .col {
+        display: table-cell;
+        text-align: center;
+    }
+}
+
+.player-detail {
+    padding: 2rem 1rem;
+}
+
+.player-name {
+    font-weight: 600;
+}
+
+.player-nationality {
+    font-weight: 600;
+}

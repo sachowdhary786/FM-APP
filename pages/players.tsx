@@ -1,11 +1,15 @@
 import React from 'react';
-import './players.scss';
 import Layout from '../src/common/layout/layout';
+import style from './players.module.scss';
+
+import { PlayerData } from '../src/common/components/player-details/player-details';
 
 export default function Players() {
     return (
         <Layout>
-            <div></div>
+            <div className={style.players}>
+                <PlayerData />
+            </div>
         </Layout>
     )
 }

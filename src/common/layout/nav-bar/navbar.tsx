@@ -13,6 +13,9 @@ function NavBar() {
                 <li>
                     <Link href="/players">Players</Link>
                 </li>
+                <li>
+                    <Link href="/about">About</Link>
+                </li>
             </ul>
         </div>
     )
