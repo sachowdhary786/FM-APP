@@ -52,7 +52,9 @@ export default function PlayerList() {
     return (
         <>
             <h3>Player List</h3>
-            {playerList()}
+            <div className={style['player-container']}>
+                {playerList()}
+            </div>
         </>
     )
 }

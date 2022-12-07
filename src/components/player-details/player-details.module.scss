@@ -1,7 +1,12 @@
+.player-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
 .player-card {
     display: flex;
     flex-direction: column;
-    max-width: 25rem;
+    width: 25rem;
     box-shadow: 0 1px 2px rgb(0 0 0 / 18%);
     &:hover {
         & .player-image:before {
