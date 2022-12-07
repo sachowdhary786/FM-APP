@@ -3,7 +3,7 @@ import style from './player-details.module.scss';
 
 const Player = (props) => (
     <div className={style['player-card']}>
-        <div className={style['player-image']} style={{ backgroundImage: `url(${props.player.image})` }} alt={props.player.name + props.player.surname} />
+        <div className={style['player-image']} style={{ backgroundImage: `url(${props.player.image})` }} />
         <div className={style['player-detail']}>
             <span className={style.name}>{props.player.name}</span>
             <span className={style.surname}>{props.player.surname}</span>
