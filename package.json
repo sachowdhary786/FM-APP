@@ -23,7 +23,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "test": "jest"
   },
   "eslintConfig": {
     "extends": [
