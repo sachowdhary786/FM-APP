@@ -91,7 +91,6 @@
 /******/ 		};
 /******/ 	}();
 /******/ 	
-<<<<<<< HEAD
 /******/ 	/* webpack/runtime/compat get default export */
 /******/ 	!function() {
 /******/ 		// getDefaultExport function for compatibility with non-harmony modules
@@ -104,8 +103,6 @@
 /******/ 		};
 /******/ 	}();
 /******/ 	
-=======
->>>>>>> server
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	!function() {
 /******/ 		// define getter functions for harmony exports
@@ -134,11 +131,7 @@
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	!function() {
-<<<<<<< HEAD
-/******/ 		__webpack_require__.h = function() { return "37f92f13749237a2"; }
-=======
-/******/ 		__webpack_require__.h = function() { return "f4486f08852d1760"; }
->>>>>>> server
+/******/ 		__webpack_require__.h = function() { return "8e25e35c59e15784"; }
 /******/ 	}();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
@@ -1231,14 +1224,11 @@
 /******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
 /******/ 	}();
 /******/ 	
-<<<<<<< HEAD
 /******/ 	/* webpack/runtime/nonce */
 /******/ 	!function() {
 /******/ 		__webpack_require__.nc = undefined;
 /******/ 	}();
 /******/ 	
-=======
->>>>>>> server
 /************************************************************************/
 /******/ 	
 /******/ 	// module cache are used so entry inlining is disabled

@@ -4,14 +4,17 @@ import NavBar from "./nav-bar/navbar";
 import styles from './layout.module.scss';
 
 
-export default function Layout({ children }) {
+const Layout = (props: { children: any; }) => {
+
     return (
         <>
             <div className={styles.container}>
                 <NavBar />
-                <main>{children}</main>
+                {props.children}
                 <Footer />
             </div>
         </>
     )
 }
+
+export default Layout;
