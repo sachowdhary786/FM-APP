@@ -3,7 +3,7 @@ import Layout from "../src/layout/layout"
 
 export default function MyApp({ Component, pageProps }: AppProps) {
     return (
-        <Layout children={undefined} >
+        <Layout>
             <Component {...pageProps} />
         </Layout>
     )
