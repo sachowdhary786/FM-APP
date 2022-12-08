@@ -1,23 +1,27 @@
 import React from "react";
 import Link from "next/link";
 
-import styles from './navbar.module.scss';
+import style from './navbar.module.scss';
 
 function NavBar() {
     return (
-        <div className={styles['nav-container']}>
-            <ul>
-                <li>
-                    <Link href="/">Home</Link>
-                </li>
-                <li>
-                    <Link href="/players">Players</Link>
-                </li>
-                <li>
-                    <Link href="/about">About</Link>
-                </li>
-            </ul>
-        </div>
+        <div className={style['nav-container']}>
+            <Link className={style['nav-link']} href="/">
+                <button className={style['nav-button']} tabIndex={-1}>
+                    Home
+                </button>
+            </Link>
+            <Link className={style['nav-link']} href="/players">
+                <button className={style['nav-button']} tabIndex={-1}>
+                    Players
+                </button>
+            </Link>
+            <Link className={style['nav-link']} href="/about">
+                <button className={style['nav-button']} tabIndex={-1}>
+                    About
+                </button>
+            </Link>
+        </div >
     )
 }
 

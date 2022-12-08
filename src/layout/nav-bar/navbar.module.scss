@@ -1,22 +1,31 @@
-.nav-container {
-    margin: 0 auto;
-    display: flex;
-    flex-direction: row;
-
-    ul {
-        list-style-type: none;
-        margin: 0 auto;
-        margin-block: 0;
-        padding: 0;
+.nav {
+    &-container {
         display: flex;
         flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+        width: 50%;
+        margin: 0 auto;
+    }
 
-        li {
-            padding: 1rem 2rem;
-
-            a {
-                text-decoration: none;
-            }
+    &-link {
+        text-decoration: none;
+        font-size: 1rem;
+        color: var(--ash);
+        cursor: pointer;
+        transition: box-shadow 0.3s ease-in-out;
+        &:hover {
+            transition: box-shadow 0.3s ease-in-out;
+            box-shadow: 2px 2px 5px;
         }
+        &[data-dark-mode] {
+            color: var(--smoke);
+        }
+    }
+
+    &-button {
+        border: none;
+        padding: 1rem 2rem;
+        background: none;
     }
 }
