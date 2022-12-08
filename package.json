@@ -26,7 +26,8 @@
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc",
-    "cypress:open": "cypress open"
+    "cypress:open": "cypress open",
+    "test": "jest"
   },
   "eslintConfig": {
     "extends": [
