@@ -5,13 +5,13 @@ import styles from './layout.module.scss';
 
 
 const Layout = ({ children }) => {
-    return (
-        <div className={styles.container}>
-            <NavBar />
-            {children}
-            <Footer />
-        </div>
-    )
+  return (
+    <div className={styles.container}>
+      <NavBar />
+      {children}
+      <Footer />
+    </div>
+  )
 }
 
 export default Layout;
