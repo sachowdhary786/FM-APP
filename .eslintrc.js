@@ -19,7 +19,7 @@ module.exports = {
     ],
     "rules": {
         "no-unused-vars": "error",
-        "no-console": "off",
+        "no-console": 2,
         "no-restricted-syntax": [
             "error",
             {
