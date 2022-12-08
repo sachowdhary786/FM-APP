@@ -5,18 +5,17 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
 var _db;
 
 module.exports = {
-    connectToServer: function (callback) {
-        client.connect(function (err, db) {
-            if (db) {
-                _db = db.db('players');
-                console.log('Succesful connection to MongoDB');
-            }
-            return callback(err);
-        });
-    },
-    getDb: function () {
-        return _db;
-    }
+  connectToServer: function (callback) {
+    client.connect(function (err, db) {
+      if (db) {
+        _db = db.db('players');
+      }
+      return callback(err);
+    });
+  },
+  getDb: function () {
+    return _db;
+  }
 }
 
 
