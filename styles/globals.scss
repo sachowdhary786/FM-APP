@@ -1,9 +1,12 @@
 :root {
-    $base: #c6538c;
-    $positive: #06a027;
-    $neutral: #d4b60c;
-    $negative: #a30707;
+    --base: #a30707;
+    --away: #d4b60c;
+    --third: #06a027;
 
     --ash: #72767e;
     --smoke: #ecedef;
+}
+
+body {
+    font-family: ff-meta-web-pro, sans-serif;
 }

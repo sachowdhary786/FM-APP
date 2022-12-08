@@ -6,16 +6,22 @@ import style from './navbar.module.scss';
 function NavBar() {
     return (
         <div className={style['nav-container']}>
-            <button className={style['nav-button']}>
-                <Link className={style['nav-link']} href="/">Home</Link>
-            </button>
-            <button className={style['nav-button']}>
-                <Link className={style['nav-link']} href="/players">Players</Link>
-            </button>
-            <button className={style['nav-button']}>
-                <Link className={style['nav-link']} href="/about">About</Link>
-            </button>
-        </div>
+            <Link className={style['nav-link']} href="/">
+                <button className={style['nav-button']} tabIndex={-1}>
+                    Home
+                </button>
+            </Link>
+            <Link className={style['nav-link']} href="/players">
+                <button className={style['nav-button']} tabIndex={-1}>
+                    Players
+                </button>
+            </Link>
+            <Link className={style['nav-link']} href="/about">
+                <button className={style['nav-button']} tabIndex={-1}>
+                    About
+                </button>
+            </Link>
+        </div >
     )
 }
 
