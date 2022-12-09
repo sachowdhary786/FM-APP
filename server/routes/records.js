@@ -6,7 +6,7 @@ const dbo = require('../db/conn');
 
 const ObjectId = require('mongodb').ObjectId;
 
-recordRoutes.route('/record').get(function (req, res) {
+recordRoutes.route('/records').get(function (req, res) {
   let db_connect = dbo.getDb('players');
   db_connect.collection('arsenal').find({}).toArray(function (err, result) {
     if (err) throw err;
@@ -27,8 +27,11 @@ recordRoutes.route('/players/add').post(function (req, response) {
   let db_connect = dbo.getDb();
   let myobj = {
     name: req.body.name,
-    age: req.body.age,
-    position: req.body.position
+    surname: req.body.surname,
+    nationality: req.body.nationality,
+    position: req.body.position,
+    number: req.body.number,
+    image: req.body.image,
   };
   db_connect.collection('arsenal').insertOne(myobj, function (err, res) {
     if (err) throw err;
@@ -42,8 +45,11 @@ recordRoutes.route('/update/:id').post(function (req, response) {
   let newvalues = {
     $set: {
       name: req.body.name,
-      age: req.body.age,
-      position: req.body.position
+      surname: req.body.surname,
+      nationality: req.body.nationality,
+      position: req.body.position,
+      number: req.body.number,
+      image: req.body.image,
     },
   }
   db_connect.collection('arsenal').updateOne(myquery, newvalues, function (err, res) {

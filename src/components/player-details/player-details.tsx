@@ -17,7 +17,7 @@ export default function PlayerList() {
 
   useEffect(() => {
     async function getPlayers() {
-      const respsonse = await fetch('http://localhost:5000/record/');
+      const respsonse = await fetch('http://localhost:5000/records/');
 
       if (!respsonse.ok) {
         const message = `An error occured: ${respsonse.statusText}`;
