@@ -2,16 +2,17 @@ import React, { useEffect, useState } from 'react';
 import style from './player-details.module.scss';
 import Image from 'next/image';
 
-import profileImg from '../../images/profile.png';
-
 const Player = (props) => (
   <div className={style['player-card']}>
-    <div className={style['player-image']}>
-      {props.player.image && (
-        <Image src={props.player.image} alt={props.player.name} width={300} height={200} />
-      )}
-      <div className={style['player-portrait']} style={{ backgroundImage: `url(${profileImg})` }} />
-    </div>
+    {props.player.image ? (
+      <div className={style['player-image']}>
+        <Image src={props.player.image} alt={props.player.name} fill sizes="(max-width: 768px) 100vw,
+              (max-width: 1200px) 50vw,
+              33vw"/>
+      </div>
+    ) :
+      <div className={style['player-noImage']} />
+    }
     <div className={style['player-detail']}>
       <span className={style.name}>{props.player.name}</span>
       <span className={style.surname}>{props.player.surname}</span>
@@ -49,8 +50,10 @@ export default function PlayerList() {
     setPlayers(newPlayers);
   }
 
-  function playerList() {
-    return players.map((player) => {
+
+  function playerList(filterPos: string) {
+    const filteredPlayers = players.filter(player => player.position === filterPos);
+    return filteredPlayers.map((player) => {
       return (
         <Player player={player} deletePlayer={() => deletePlayer(player._id)} key={player._id} />
       )
@@ -61,7 +64,7 @@ export default function PlayerList() {
     <>
       <h3>Player List</h3>
       <div className={style['player-container']}>
-        {playerList()}
+        {playerList('Goalkeeper')}
       </div>
     </>
   )
