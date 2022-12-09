@@ -1,9 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import style from './player-details.module.scss';
+import Image from 'next/image';
+
+import profileImg from '../../images/profile.png';
 
 const Player = (props) => (
   <div className={style['player-card']}>
-    <div className={style['player-image']} style={{ backgroundImage: `url(${props.player.image})` }} />
+    <div className={style['player-image']}>
+      {props.player.image && (
+        <Image src={props.player.image} alt={props.player.name} width={300} height={200} />
+      )}
+      <div className={style['player-portrait']} style={{ backgroundImage: `url(${profileImg})` }} />
+    </div>
     <div className={style['player-detail']}>
       <span className={style.name}>{props.player.name}</span>
       <span className={style.surname}>{props.player.surname}</span>
