@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import style from './blog-list.module.scss';
+import ReactMarkdown from 'react-markdown'
 
 
 export default function BlogList() {
   const [posts, setPosts] = useState([]);
 
   const Post = (props) => (
-    <div className={style['blog-card']}>
-      <div>{props.post.title}</div>
-      <div>{props.post.content}</div>
+    <div className={style['post-card']}>
+      <ReactMarkdown>{'## ' + props.post.title}</ReactMarkdown>
+      <ReactMarkdown>{props.post.content}</ReactMarkdown>
+      <caption>Written by: {props.post.author}</caption>
     </div >
   )
 
@@ -41,7 +43,7 @@ export default function BlogList() {
   function postList() {
     return posts.map((post) => {
       return (
-        <Post post={post} deletePost={() => deletePost(post._id)} key={post._id} />
+        <Post post={post} deletePost={() => deletePost(post._id)} key={post._id} tabIndex={post._id} />
       )
     })
   }
