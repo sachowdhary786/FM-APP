@@ -14,7 +14,7 @@ postRoutes.route('/posts').get(function (req, res) {
   })
 });
 
-postRoutes.route('/players/:id').get(function (req, res) {
+postRoutes.route('/posts/:id').get(function (req, res) {
   let db_connect = dbo.getDb();
   let myquery = { _id: ObjectId(req.params.id) };
   db_connect.collection('posts').findOne(myquery, function (err, result) {
@@ -23,11 +23,12 @@ postRoutes.route('/players/:id').get(function (req, res) {
   })
 })
 
-postRoutes.route('/players/add').post(function (req, response) {
+postRoutes.route('/posts/add').post(function (req, response) {
   let db_connect = dbo.getDb();
   let myobj = {
     title: req.body.title,
     content: req.body.content,
+    author: req.body.author
   };
   db_connect.collection('posts').insertOne(myobj, function (err, res) {
     if (err) throw err;
@@ -35,13 +36,14 @@ postRoutes.route('/players/add').post(function (req, response) {
   })
 })
 
-postRoutes.route('/update/:id').post(function (req, response) {
+postRoutes.route('/posts/update/:id').post(function (req, response) {
   let db_connect = dbo.getDb();
   let myquery = { _id: ObjectId(req.params.id) };
   let newvalues = {
     $set: {
       title: req.body.title,
       content: req.body.content,
+      author: req.body.author
     },
   }
   db_connect.collection('posts').updateOne(myquery, newvalues, function (err, res) {
@@ -50,7 +52,7 @@ postRoutes.route('/update/:id').post(function (req, response) {
   })
 })
 
-postRoutes.route('/:id').delete((req, response) => {
+postRoutes.route('posts/:id').delete((req, response) => {
   let db_connect = dbo.getDb();
   let myquery = { _id: ObjectId(req.params.id) };
   db_connect.collection('posts').deleteOne(myquery, function (err, obj) {
