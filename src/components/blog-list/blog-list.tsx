@@ -7,10 +7,13 @@ export default function BlogList() {
   const [posts, setPosts] = useState([]);
 
   const Post = (props) => (
-    <div className={style['post-card']}>
-      <ReactMarkdown>{'## ' + props.post.title}</ReactMarkdown>
-      <ReactMarkdown>{props.post.content}</ReactMarkdown>
-      <caption>Written by: {props.post.author}</caption>
+
+    <div className={style['post-container']}>
+      <div className={style['post-card']}>
+        <ReactMarkdown>{'### ' + props.post.title}</ReactMarkdown>
+        <ReactMarkdown>{props.post.content}</ReactMarkdown>
+        <caption>Written by: {props.post.author}</caption>
+      </div >
     </div >
   )
 
@@ -49,7 +52,7 @@ export default function BlogList() {
   }
 
   return (
-    <div className={style['post-container']}>
+    <div className={style['content-container']}>
       {postList()}
     </div>
   )
