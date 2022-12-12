@@ -1,5 +1,4 @@
 import React from "react";
-import Footer from "../components/footer/footer";
 import NavBar from "../components/nav-bar/navbar";
 import styles from './layout.module.scss';
 
@@ -9,7 +8,6 @@ const Layout = ({ children }) => {
     <div className={styles.container}>
       <NavBar />
       {children}
-      <Footer />
     </div>
   )
 }

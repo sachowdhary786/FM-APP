@@ -1,8 +1,20 @@
+.content-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 70rem;
+}
+
 .player-container {
     display: flex;
-    justify-content: space-evenly;
-    gap: 2rem;
     flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: space-between;
+
+    &:after {
+        content: "";
+        width: 20rem;
+    }
 }
 
 .player-card {
