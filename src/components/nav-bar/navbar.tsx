@@ -21,6 +21,11 @@ function NavBar() {
           Blog
         </button>
       </Link>
+      <Link className={style['nav-link']} href="/">
+        <button className={style['nav-button']} tab-index={-1}>
+          Login
+        </button>
+      </Link>
     </div >
   )
 }
