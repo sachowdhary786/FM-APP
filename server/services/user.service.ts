@@ -1,6 +1,5 @@
 import { setCookie } from 'cookies-next';
 import { OptionsType } from 'cookies-next/lib/types';
-import errorHandler from '../contollers/error.controller';
 import deserializeUser from '../middleware/deserializeUser';
 import { LoginInput } from '../schemas/user.schema';
 import UserModel, { User } from '../models/user.model';
@@ -67,7 +66,7 @@ export default class UserService {
       // if (error.code === 11000) {
       //   return new ForbiddenError('Email already exists')
       // }
-      errorHandler(error);
+      throw new error;
     }
   }
 
@@ -104,7 +103,7 @@ export default class UserService {
         status: 'success', access_token
       };
     } catch (error: any) {
-      errorHandler(error);
+      throw new error;
     }
   }
 
@@ -120,7 +119,7 @@ export default class UserService {
         }
       }
     } catch (error: any) {
-      errorHandler(error);
+      throw new error;
     }
   }
 
@@ -183,7 +182,7 @@ export default class UserService {
       }
 
     } catch (error) {
-      errorHandler(error);
+      throw new error;
     }
   }
 
@@ -202,7 +201,7 @@ export default class UserService {
 
       return true;
     } catch (error) {
-      errorHandler(error);
+      throw new error;
     }
   }
 }

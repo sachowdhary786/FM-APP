@@ -3,7 +3,6 @@
 // import { AuthenticationError, ForbiddenError } from 'apollo-server-micro';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { hasCookie, getCookie } from 'cookies-next';
-import errorHandler from '../contollers/error.controller';
 import UserModel from '../models/user.model';
 import redisClient from '../utils/connectRedis';
 import { verifyJwt } from '../utils/jwt';
@@ -43,7 +42,7 @@ const deserializeUser = async (req: NextApiRequest, res: NextApiResponse) => {
     }
     return user;
   } catch (error: any) {
-    errorHandler(error);
+    throw new error;
   }
 }
 

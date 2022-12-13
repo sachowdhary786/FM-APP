@@ -5,7 +5,6 @@ import { buildSchema } from 'type-graphql';
 import Cors from 'cors';
 import { resolvers } from '../../server/resolvers';
 import { connectDB } from '../../server/utils/connectDB';
-import deserializeUser from '../../server/middleware/deserializeUser';
 
 const cors = Cors({
   methods: ['GET', 'HEAD', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
@@ -36,10 +35,7 @@ const schema = await buildSchema({
 
 const server = new ApolloServer({
   schema,
-  csrfPrevention: true,
-  context: ({ req, res }: { req: NextApiRequest; res: NextApiResponse }) => ({
-    req, res, deserializeUser
-  })
+  csrfPrevention: true
 });
 
 export const config = {
@@ -57,5 +53,4 @@ export default async function handler(
   await runMiddleware(req, res, cors);
   await connectDB();
   await startServer;
-  await server.createHandler({ path: '/api/graphql' })(req, res);
 }
