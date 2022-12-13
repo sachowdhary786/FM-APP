@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 mongoose.set('strictQuery', true);
 
 const localUri = process.env.MONGODB_URI as string;
-const connection: any = {}; 
+const connection: any = {};
 
 export async function connectDB() {
   if (connection.isConnected) {
@@ -31,7 +31,7 @@ export async function disconnectDB() {
       await mongoose.disconnect();
       connection.isConnected = false;
     } else {
-      console.log('not discounted')
+      console.log('not disconnected')
     }
   }
 }

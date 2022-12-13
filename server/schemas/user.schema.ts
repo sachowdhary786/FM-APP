@@ -1,21 +1,21 @@
 import { Field, InputType, ObjectType } from 'type-graphql';
-import { IsEmail, MaxLength, MinLength } from 'class-validator'; 
+import { IsEmail, MaxLength, MinLength } from 'class-validator';
 
 // Structure of the data the client sends to the server
 @InputType()
 export class SignUpInput {
   @Field(() => String)
-    name: string; 
+    name: string;
 
   @IsEmail()
   @Field(() => String)
-    email: string; 
+    email: string;
 
   @MinLength(8, { message: 'Password must be at least 8 characters long' })
   @MaxLength(32, { message: 'Password must be no more than 32 characters long' })
   @Field(() => String)
     password: string;
-  
+
   @Field(() => String)
     passwordConfirm: string | undefined;
 
@@ -28,7 +28,7 @@ export class SignUpInput {
 export class LoginInput {
   @IsEmail()
   @Field(() => String)
-    email: string; 
+    email: string;
 
   @MinLength(8, { message: 'Invalid Email or Password' })
   @MaxLength(32, { message: 'Invalid Email or Password' })
@@ -37,14 +37,14 @@ export class LoginInput {
 }
 
 // Structure of the data the server returns to the client 
-@ObjectType() 
-export class UserData{
+@ObjectType()
+export class UserData {
   @Field(() => String)
   readonly _id: string;
 
   @Field(() => String, { nullable: true })
   readonly id: string;
-  
+
   @Field(() => String)
     name: string;
 
@@ -66,7 +66,7 @@ export class UserData{
 
 // Structure of the data the server returns to the client 
 @ObjectType()
-export class UserRepsonse {
+export class UserResponse {
   @Field(() => String)
     status: string;
 
@@ -75,11 +75,11 @@ export class UserRepsonse {
 }
 
 // Structure of the data the server returns to the client 
-@ObjectType() 
+@ObjectType()
 export class LoginResponse {
   @Field(() => String)
-    status: string; 
+    status: string;
 
   @Field(() => String)
-    access_token: string; 
+    access_token: string;
 }

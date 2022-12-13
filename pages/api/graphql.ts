@@ -1,9 +1,11 @@
 import 'reflect-metadata';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { ApolloServer } from 'apollo-server-micro';
-import { buildSchema, Query, Resolver } from 'type-graphql';
+import { buildSchema } from 'type-graphql';
 import Cors from 'cors';
+import { resolvers } from '../../server/resolvers';
 import { connectDB } from '../../server/utils/connectDB';
+import deserializeUser from '../../server/middleware/deserializeUser';
 
 const cors = Cors({
   methods: ['GET', 'HEAD', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
@@ -27,20 +29,17 @@ function runMiddleware(req: NextApiRequest, res: NextApiResponse, fn: any) {
   })
 }
 
-@Resolver()
-class HelloResolver {
-  @Query(() => String)
-  hello() {
-    return 'Hello World';
-  }
-}
-
 const schema = await buildSchema({
-  resolvers: [HelloResolver]
+  resolvers,
+  dateScalarMode: 'isoDate'
 });
 
 const server = new ApolloServer({
-  schema
+  schema,
+  csrfPrevention: true,
+  context: ({ req, res }: { req: NextApiRequest; res: NextApiResponse }) => ({
+    req, res, deserializeUser
+  })
 });
 
 export const config = {
@@ -49,7 +48,7 @@ export const config = {
   }
 }
 
-const startServer = server.start(); 
+const startServer = server.start();
 
 export default async function handler(
   req: NextApiRequest,

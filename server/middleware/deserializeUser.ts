@@ -2,7 +2,7 @@
 
 import { AuthenticationError, ForbiddenError } from 'apollo-server-micro';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { checkCookies, getCookie } from 'cookies-next';
+import { hasCookie, getCookie } from 'cookies-next';
 import errorHandler from '../contollers/error.controller';
 import UserModel from '../models/user.model';
 import redisClient from '../utils/connectRedis';
@@ -17,7 +17,7 @@ const deserializeUser = async (req: NextApiRequest, res: NextApiResponse) => {
       req.headers.authorization.startsWith('Bearer')
     ) {
       access_token = req.headers.authorization.split(' ')[1];
-    } else if (checkCookies('access token', { req, res })) {
+    } else if (hasCookie('access token', { req, res })) {
       access_token = getCookie('access_token', { req, res });
     }
 
