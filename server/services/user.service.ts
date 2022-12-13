@@ -1,4 +1,3 @@
-import { AuthenticationError, ForbiddenError } from 'apollo-server-micro';
 import { setCookie } from 'cookies-next';
 import { OptionsType } from 'cookies-next/lib/types';
 import errorHandler from '../contollers/error.controller';
@@ -65,9 +64,9 @@ export default class UserService {
         user: user.toJSON(),
       }
     } catch (error: any) {
-      if (error.code === 11000) {
-        return new ForbiddenError('Email already exists')
-      }
+      // if (error.code === 11000) {
+      //   return new ForbiddenError('Email already exists')
+      // }
       errorHandler(error);
     }
   }
@@ -75,18 +74,18 @@ export default class UserService {
   // Login an existing user
   async loginUser(input: LoginInput, { req, res }: Context) {
     try {
-      const message = 'Invalid email or password';
+      // const message = 'Invalid email or password';
       // Step 1: Find user by email 
       const user = await findByEmail(input.email);
       await disconnectDB();
 
-      if (!user) {
-        return new AuthenticationError(message);
-      }
+      // if (!user) {
+      //   return new AuthenticationError(message);
+      // }
       // Step 2: Compare the inputted password with the stored one
-      if (!(await UserModel.comparePasswords(user.password, input.password))) {
-        return new AuthenticationError(message);
-      }
+      // if (!(await UserModel.comparePasswords(user.password, input.password))) {
+      //   return new AuthenticationError(message);
+      // }
 
       // Step 3: Sign JWT Tokens
       const { access_token, refresh_token } = signTokens(user);
@@ -131,25 +130,25 @@ export default class UserService {
       // Get the refresh token
       const { refresh_token } = req.cookies;
 
-      if (!refresh_token) {
-        throw new ForbiddenError('Could not refresh the access token');
-      }
+      // if (!refresh_token) {
+      //   throw new ForbiddenError('Could not refresh the access token');
+      // }
 
       const decoded = verifyJwt<{ userId: string }>(
         refresh_token,
         'refreshTokenPublicKey'
       );
 
-      if (!decoded) {
-        throw new ForbiddenError('Could not refresh the access token');
-      }
+      // if (!decoded) {
+      //   throw new ForbiddenError('Could not refresh the access token');
+      // }
 
       //Check if the users session is still valid 
       const session = await redisClient.get(decoded.userId);
 
-      if (!session) {
-        throw new ForbiddenError('User session has expired');
-      }
+      // if (!session) {
+      //   throw new ForbiddenError('User session has expired');
+      // }
 
       // Check if the user exists and is verified
       const user = await UserModel.findById(JSON.parse(session)._id).select(
@@ -157,9 +156,9 @@ export default class UserService {
       );
       await disconnectDB();
 
-      if (!user || !user.verified) {
-        throw new ForbiddenError('Could not refresh the access token. User does not exist or is not verified')
-      }
+      // if (!user || !user.verified) {
+      //   throw new ForbiddenError('Could not refresh the access token. User does not exist or is not verified')
+      // }
 
       // Sign a new access token
       const access_token = signJwt(

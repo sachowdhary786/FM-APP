@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { ApolloServer } from 'apollo-server-micro';
+import { ApolloServer } from '@apollo/server';
 import { buildSchema } from 'type-graphql';
 import Cors from 'cors';
 import { resolvers } from '../../server/resolvers';
