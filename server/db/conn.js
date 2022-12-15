@@ -1,6 +1,7 @@
 
 const { MongoClient } = require('mongodb');
-const uri = "mongodb+srv://saad:Zaina78602@cluster0.676d1fs.mongodb.net/players/arsenal?retryWrites=true&w=majority";
+const uri = process.env.MONGODB_URI
+console.log(uri);
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 var _db;
 
