@@ -1,7 +1,7 @@
 
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient } = require('mongodb');
 const uri = "mongodb+srv://saad:Zaina78602@cluster0.676d1fs.mongodb.net/players/arsenal?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 var _db;
 
 module.exports = {

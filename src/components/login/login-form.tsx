@@ -19,7 +19,7 @@ export default function LoginForm() {
 
     const newPost = { ...form };
 
-    await fetch('http://localhost:5000/posts/add', {
+    await fetch('http://127.0.0.1:5000/posts/add', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',

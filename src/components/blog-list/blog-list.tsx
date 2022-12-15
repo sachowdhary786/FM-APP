@@ -12,14 +12,16 @@ export default function BlogList() {
       <div className={style['post-card']}>
         <ReactMarkdown>{'### ' + props.post.title}</ReactMarkdown>
         <ReactMarkdown>{props.post.content}</ReactMarkdown>
-        <caption>Written by: {props.post.author}</caption>
+        <p>
+          <caption>Written by: {props.post.author}</caption>
+        </p>
       </div >
     </div >
   )
 
   useEffect(() => {
     async function getPosts() {
-      const response = await fetch('http://localhost:5000/posts/');
+      const response = await fetch(`${process.env.POSTS_URI}`);
 
       if (!response.ok) {
         const message = `An error occured ${response.statusText}`;
@@ -35,7 +37,7 @@ export default function BlogList() {
   }, [posts.length]);
 
   async function deletePost(id) {
-    await fetch(`http://localhost:5000${id}`, {
+    await fetch(`${process.env.MONGODB_URI}${id}`, {
       method: 'DELETE'
     })
 
