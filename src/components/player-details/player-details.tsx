@@ -32,13 +32,13 @@ export default function PlayerList() {
 
   useEffect(() => {
     async function getPlayers() {
-      const respsonse = await fetch('http://localhost:5000/records/');
-      if (!respsonse.ok) {
-        const message = `An error occured: ${respsonse.statusText}`;
+      const response = await fetch(`${process.env.RECORDS_URI}`);
+      if (!response.ok) {
+        const message = `An error occured: ${response.statusText}`;
         window.alert(message);
         return;
       }
-      const players = await respsonse.json();
+      const players = await response.json();
       setPlayers(players);
       setState({ loading: false, error: null })
     }

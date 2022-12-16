@@ -17,8 +17,13 @@ function NavBar() {
         </button>
       </Link>
       <Link className={style['nav-link']} href="/blog/">
-        <button className={style['nav-button']} tab-index={-1}>
+        <button className={style['nav-button']} tabIndex={-1}>
           Blog
+        </button>
+      </Link>
+      <Link className={style['nav-link']} href="/login">
+        <button className={style['nav-button']} tabIndex={-1}>
+          Login
         </button>
       </Link>
     </div >
