@@ -1,27 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import style from './player-details.module.scss';
-import Image from 'next/image';
-
-const Player = (props) => (
-  <div className={style['player-card']}>
-    {props.player.image ? (
-      <div className={style['player-image']}>
-        <Image src={props.player.image} alt={props.player.name} fill sizes="(max-width: 768px) 100vw,
-              (max-width: 1200px) 50vw,
-              33vw"/>
-      </div>
-    ) :
-      <div className={style['player-noImage']} />
-    }
-    <div className={style['player-detail']}>
-      {props.player.name ? (
-        <span className={style.name}>{props.player.name}</span>
-      ) : <span className={style.name}>&nbsp;</span>}
-      <span className={style.surname}>{props.player.surname}</span>
-      <span className={style.nationality}>{props.player.nationality}</span>
-    </div>
-  </div>
-)
+import PlayerCard from '../player-card/player-card';
 
 export default function PlayerList() {
   const [state, setState] = useState({
@@ -45,13 +24,19 @@ export default function PlayerList() {
     getPlayers();
 
     return;
-  }, [players.length]);
+  }, []);
 
   function playerList(filterPos: string) {
     const filteredPlayers = players.filter(player => player.position === filterPos);
     return filteredPlayers.map((player) => {
       return (
-        <Player player={player} key={player._id} />
+        <PlayerCard
+          name={player.name}
+          surname={player.surname}
+          nationality={player.nationality}
+          image={player.image}
+          key={player._id}
+        />
       )
     })
   }
